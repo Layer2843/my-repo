@@ -2,30 +2,6 @@ sequenceDiagram
     participant przeglądarka
     participant serwer
 
-    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/spa
-    activate serwer
-    serwer-->>przeglądarka: czyta html
-    deactivate serwer
-
-    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate serwer
-    serwer-->>przeglądarka: czyta css
-    deactivate serwer
-
-    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
-    activate serwer
-    serwer-->>przeglądarka: czyta JS
-    deactivate serwer
-
-    Note right of przeglądarka: wykonuje skrypt i pobiera dane json
-
-    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate serwer
-    serwer-->>przeglądarka: [{ "content": "klasa", "date": "2023-1-1" }, ... ]
-    deactivate serwer
-
-    Note right of przeglądarka: wczytuje notatki
-
     Note right of przeglądarka: po wpisaniu notatki klikamy "save"
 
     przeglądarka->>serwer: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
