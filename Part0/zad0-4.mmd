@@ -24,4 +24,35 @@ sequenceDiagram
     serwer-->>przeglądarka: [{ "content": "klasa", "date": "2023-1-1" }, ... ]
     deactivate serwer
 
-    Note right of przeglądarka: Przeglądarka wykonuje funkcję zwrotną, która renderuje notatki
+    Note right of przeglądarka: Przeglądarka renderuje notatki na stronie
+
+    Note right of przeglądarka: Użytkownik wpisuje nową notatkę i klika przycisk "Save"
+
+    przeglądarka->>serwer: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate serwer
+    serwer-->>przeglądarka: Przekierowanie (HTTP 302) do /exampleapp/notes
+    deactivate serwer
+
+    Note right of przeglądarka: Przeglądarka ponownie ładuje stronę /notes
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate serwer
+    serwer-->>przeglądarka: dokument HTML z nową notatką
+    deactivate serwer
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate serwer
+    serwer-->>przeglądarka: plik CSS
+    deactivate serwer
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate serwer
+    serwer-->>przeglądarka: plik JavaScript
+    deactivate serwer
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate serwer
+    serwer-->>przeglądarka: Zaktualizowane dane JSON z nową notatką
+    deactivate serwer
+
+    Note right of przeglądarka: Przeglądarka renderuje zaktualizowaną listę notatek
