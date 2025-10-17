@@ -1,25 +1,27 @@
 sequenceDiagram
-    participant browser
-    participant server
+    participant przeglądarka
+    participant serwer
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
-    activate server
-    server-->>browser: HTML document
-    deactivate server
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate serwer
+    serwer-->>przeglądarka: dokument HTML
+    deactivate serwer
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
-    server-->>browser: the CSS file
-    deactivate server
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate serwer
+    serwer-->>przeglądarka: plik CSS
+    deactivate serwer
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
-    activate server
-    server-->>browser: the JavaScript file
-    deactivate server
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    activate serwer
+    serwer-->>przeglądarka: plik JavaScript
+    deactivate serwer
 
-    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+    Note right of przeglądarka: Przeglądarka zaczyna wykonywać kod JavaScript, który pobiera dane JSON z serwera
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser: [{ "content": "klasa", "date": "2023-1-1" }, ... ]
-    deactivate server
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate serwer
+    serwer-->>przeglądarka: [{ "content": "klasa", "date": "2023-1-1" }, ... ]
+    deactivate serwer
+
+    Note right of przeglądarka: Przeglądarka dynamicznie renderuje notatki bez przeładowania strony
