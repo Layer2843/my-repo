@@ -4,24 +4,24 @@ sequenceDiagram
 
     przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate serwer
-    serwer-->>przeglądarka: dokument HTML
+    serwer-->>przeglądarka: czyta html
     deactivate serwer
 
     przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate serwer
-    serwer-->>przeglądarka: plik CSS
+    serwer-->>przeglądarka: czyta css
     deactivate serwer
 
     przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
     activate serwer
-    serwer-->>przeglądarka: plik JavaScript
+    serwer-->>przeglądarka: czyta JS
     deactivate serwer
 
-    Note right of przeglądarka: Przeglądarka zaczyna wykonywać kod JavaScript, który pobiera dane JSON z serwera
+    Note right of przeglądarka: pobiera dane json z serwera
 
     przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate serwer
     serwer-->>przeglądarka: [{ "content": "klasa", "date": "2023-1-1" }, ... ]
     deactivate serwer
 
-    Note right of przeglądarka: Przeglądarka dynamicznie renderuje notatki bez przeładowania strony
+    Note right of przeglądarka: wczytuje notatki bez "refreshu"
