@@ -2,35 +2,57 @@ sequenceDiagram
     participant przeglądarka
     participant serwer
 
-    Note right of przeglądarka: Użytkownik wpisuje nową notatkę i klika "save"
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate serwer
+    serwer-->>przeglądarka: czyta html
+    deactivate serwer
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate serwer
+    serwer-->>przeglądarka: czyta css
+    deactivate serwer
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate serwer
+    serwer-->>przeglądarka: czyta JS
+    deactivate serwer
+
+    Note right of przeglądarka: pobiera dane json z serwera
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate serwer
+    serwer-->>przeglądarka: [{ "content": "klasa", "date": "2023-1-1" }, ... ]
+    deactivate serwer
+
+    Note right of przeglądarka: wczytuje notatki na stronie
+
+    Note right of przeglądarka: po wpisaniu notatki klikamy "save"
 
     przeglądarka->>serwer: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate serwer
     serwer-->>przeglądarka: Przekierowanie (HTTP 302) do /exampleapp/notes
     deactivate serwer
 
-    Note right of przeglądarka: Przeglądarka ładuje ponownie stronę /notes
+    Note right of przeglądarka: ponowne zaladowanie /notes
 
     przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate serwer
-    serwer-->>przeglądarka: HTML z nową notatką
+    serwer-->>przeglądarka: html z nowa notatka
     deactivate serwer
 
     przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate serwer
-    serwer-->>przeglądarka: CSS
+    serwer-->>przeglądarka: czyta css
     deactivate serwer
 
     przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.js
     activate serwer
-    serwer-->>przeglądarka: JavaScript
+    serwer-->>przeglądarka: czyta JS
     deactivate serwer
-
-    Note right of przeglądarka: JavaScript pobiera dane JSON z serwera
 
     przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate serwer
-    serwer-->>przeglądarka: Zaktualizowane dane JSON z nową notatką
+    serwer-->>przeglądarka: zaaktualizowane dane
     deactivate serwer
 
-    Note right of przeglądarka: Przeglądarka renderuje zaktualizowaną listę notatek
+    Note right of przeglądarka: pokazuje zaaktualizowana liste notatek
