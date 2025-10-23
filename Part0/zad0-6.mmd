@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant przeglądarka
+    participant serwer
+
+    Note right of przeglądarka: po wpisaniu notatki klikamy "save"
+
+    przeglądarka->>serwer: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate serwer
+    serwer-->>przeglądarka: Status odpowiedzi (np. 201 Created)
+    deactivate serwer
+
+    Note right of przeglądarka: aktualizuje notatki bez "refreshu"

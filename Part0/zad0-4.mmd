@@ -1,0 +1,36 @@
+sequenceDiagram
+    participant przeglądarka
+    participant serwer
+
+    Note right of przeglądarka: po wpisaniu notatki klikamy "save"
+
+    przeglądarka->>serwer: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate serwer
+    serwer-->>przeglądarka: Przekierowanie (HTTP 302) do /exampleapp/notes
+    deactivate serwer
+
+    Note right of przeglądarka: przegladarka ponownie laduje strone /notes
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate serwer
+    serwer-->>przeglądarka: HTML z nową notatką
+    deactivate serwer
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate serwer
+    serwer-->>przeglądarka: CSS
+    deactivate serwer
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate serwer
+    serwer-->>przeglądarka: JavaScript
+    deactivate serwer
+
+    Note right of przeglądarka: js pobiera dane json z serwera
+
+    przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate serwer
+    serwer-->>przeglądarka: Zaktualizowane dane JSON z nową notatką
+    deactivate serwer
+
+    Note right of przeglądarka: przegladarka wyswietla zaaktualizowane dane
