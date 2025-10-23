@@ -18,12 +18,12 @@ sequenceDiagram
 
     przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate serwer
-    serwer-->>przeglądarka: CSS
+    serwer-->>przeglądarka: czyta CSS
     deactivate serwer
 
     przeglądarka->>serwer: GET https://studies.cs.helsinki.fi/exampleapp/main.js
     activate serwer
-    serwer-->>przeglądarka: JavaScript
+    serwer-->>przeglądarka: czyta JS
     deactivate serwer
 
     Note right of przeglądarka: js pobiera dane json z serwera
