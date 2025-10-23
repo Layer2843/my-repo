@@ -6,7 +6,7 @@ sequenceDiagram
 
     przeglądarka->>serwer: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate serwer
-    serwer-->>przeglądarka: Przekierowanie (HTTP 302) do /exampleapp/notes
+    serwer-->>przeglądarka: przekierowanie (HTTP 302) do /exampleapp/notes
     deactivate serwer
 
     Note right of przeglądarka: przegladarka ponownie laduje strone /notes
