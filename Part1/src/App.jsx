@@ -1,55 +1,29 @@
-const Header = ({course}) => {
-  return(
-    <h1>{course.name}</h1>
-  )
-}
+import { useState } from 'react'
 
-
-const Content = ({course}) => {
-  return (
-    <div>
-      <p>{course.parts[0].name} {course.parts[0].exercises}!</p>
-      <p>{course.parts[1].name} {course.parts[1].exercises}</p>
-      <p>{course.parts[2].name} {course.parts[2].exercises}</p>
-    </div>
-  )
-}
-
-const Total = ({course}) => {
-  return(
-    <p>Number of exercises {course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises}</p>
-  )
-}
-
+const Button = ({ handleClick, text }) => (
+  <button onClick={handleClick}>{text}</button>
+)
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
-  }
+  
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
   return (
     <div>
-      <Header course={course}/>
-      <Content course={course}/>
-      <Total course={course}/>
+      <h1>give feedback</h1>
+      <p>
+        <Button handleClick={() => setGood(good + 1)} text="good" />
+        <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
+        <Button handleClick={() => setBad(bad + 1)} text="bad" />
+      </p>
+      <h1>statistics</h1>
+      <p>good {good}</p>
+      <p>neutral {neutral}</p>
+      <p>bad {bad}</p>
     </div>
   )
 }
 
 export default App
-
-
