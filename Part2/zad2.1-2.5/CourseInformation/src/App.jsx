@@ -1,6 +1,7 @@
 import Course from './components/Course'
 
 const App = () => {
+
   const course = {
     id: 1,
     name: 'Half Stack application development',
@@ -25,6 +26,7 @@ const App = () => {
         exercises: 11,
         id: 4
       }
+      
     ]
   }
 
@@ -32,3 +34,5 @@ const App = () => {
 }
 
 export default App
+
+
