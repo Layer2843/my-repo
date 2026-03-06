@@ -10,6 +10,19 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
 
+  const deletePerson = (id) => {
+  if (confirm("Czy chcesz usunąć dane tej osoby?")) {
+    noteService
+      .deletePerson(id)
+      .then(() => {
+        setPersons(persons.filter(p => p.id !== id))
+      })
+  } else {
+    return
+  }
+}
+
+
   useEffect(() => {
     noteService
       .getAll()
@@ -57,7 +70,7 @@ const App = () => {
         setNewNumber={setNewNumber}
       />
       <h3>Numbers</h3>
-      <Persons persons={personsToShow} />
+      <Persons persons={personsToShow} deletePerson={deletePerson}/>
     </div>
   )
 }
